@@ -1,0 +1,15 @@
+{
+  "name": "tv-home",
+  "appName": "Accueil",
+  "version": "0.1.0",
+  "description": "Ecran d'accueil personnalise pour Samsung Tizen, navigation a la telecommande.",
+  "packageType": "app",
+  "appPath": "app/index.html",
+  "keys": [
+    "MediaPlayPause",
+    "MediaPlay",
+    "MediaPause",
+    "MediaStop"
+  ],
+  "license": "MIT"
+}
