@@ -9,5 +9,13 @@
   <tizen:privilege name="http://tizen.org/privilege/internet"/>
   <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
   <tizen:privilege name="http://tizen.org/privilege/tv.inputdevice"/>
+  <tizen:privilege name="http://developer.samsung.com/privilege/network.public"/>
+  <tizen:service id="TVHome0001.Boot" type="ui" auto-restart="true" on-boot="true">
+    <tizen:content src="service.js"/>
+    <tizen:name>Accueil demarrage</tizen:name>
+    <tizen:icon src="icon.png"/>
+    <tizen:description>Ouvre l'accueil au demarrage de la TV</tizen:description>
+    <tizen:category name="http://tizen.org/category/service"/>
+  </tizen:service>
   <tizen:profile name="tv-samsung"/>
 </widget>
