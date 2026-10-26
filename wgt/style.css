@@ -1,0 +1,17 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0b0d12; color: #fff;
+  font-family: "SamsungOne", "Segoe UI", sans-serif; }
+#bg { position: fixed; inset: 0; background: radial-gradient(circle at 30% 20%, #243b55, #0b0d12 70%) center/cover;
+  transition: background-image .6s; }
+#bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.65), rgba(0,0,0,.1) 60%); }
+header { position: absolute; top: 70px; left: 110px; }
+#time { font-size: 120px; font-weight: 300; letter-spacing: 2px; }
+#date { font-size: 36px; opacity: .8; margin-top: 6px; text-transform: capitalize; }
+main { position: absolute; left: 0; right: 0; bottom: 170px; padding: 0 110px; }
+#tiles { display: flex; gap: 36px; }
+.tile { width: 260px; height: 260px; border-radius: 28px; background: rgba(255,255,255,.12);
+  backdrop-filter: blur(8px); display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 22px; font-size: 30px; transition: transform .15s, background .15s, box-shadow .15s; }
+.tile .icon { font-size: 92px; line-height: 1; }
+.tile.focus { transform: scale(1.12); background: rgba(255,255,255,.28); box-shadow: 0 18px 50px rgba(0,0,0,.5); }
+footer { position: absolute; bottom: 60px; left: 110px; font-size: 26px; opacity: .6; }

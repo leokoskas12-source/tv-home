@@ -1,0 +1,4 @@
+*.wgt
+.manifest.tmp
+author-signature.xml
+signature*.xml
