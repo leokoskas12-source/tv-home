@@ -1,13 +1,12 @@
 // Personnalisation : modifie ce fichier pour changer les tuiles et le fond.
-// `appId` = identifiant Tizen de l'app (voir README pour les trouver).
+// type "module" : lance un module TizenBrew (moduleType "npm" ou "gh").
+// type "source" : envoie la touche Source de la TV (ouvre le menu des sources).
 window.HOME_CONFIG = {
+  tizenbrewId: "xvvl3S1bvH",
   background: "", // ex. "bg.jpg" (image placee dans app/), sinon degrade par defaut
   tiles: [
-    { name: "YouTube", icon: "▶", appId: "111299001912" },
-    { name: "Netflix", icon: "N", appId: "3201907018807" },
-    { name: "Prime Video", icon: "P", appId: "3201910019365" },
-    { name: "Disney+", icon: "D", appId: "3201901017640" },
-    { name: "Plex", icon: "⬢", appId: "3201512006963" },
-    { name: "Reglages", icon: "⚙", appId: "" }
+    { name: "Nuvio", icon: "▶", type: "module", moduleType: "gh", moduleName: "NuvioMedia/NuvioTVTizen" },
+    { name: "TizenTube", icon: "▷", type: "module", moduleType: "npm", moduleName: "@foxreis/tizentube" },
+    { name: "Sources", icon: "⬚", type: "source" }
   ]
 };

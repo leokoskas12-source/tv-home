@@ -30,18 +30,42 @@
     for (var k = 0; k < els.length; k++) els[k].classList.toggle("focus", k === index);
   }
 
-  function launch(t) {
-    if (!t.appId) {
-      hint.textContent = t.name + " : aucune app configuree";
-      return;
-    }
+  function say(msg) { hint.textContent = msg; }
+
+  function launchModule(t) {
     try {
-      window.tizen.application.launch(t.appId, function () {}, function (e) {
-        hint.textContent = "Echec : " + (e && e.message ? e.message : t.name);
-      });
+      var data = new tizen.ApplicationControlData("module",
+        [JSON.stringify({ moduleName: t.moduleName, moduleType: t.moduleType })]);
+      var ctl = new tizen.ApplicationControl("http://tizen.org/appcontrol/operation/default",
+        null, null, null, [data]);
+      tizen.application.launchAppControl(ctl, cfg.tizenbrewId, function () {},
+        function (e) { say("Echec : " + (e && e.message ? e.message : t.name)); });
     } catch (e) {
-      hint.textContent = "API Tizen indisponible pour " + t.name;
+      say("API Tizen indisponible pour " + t.name);
     }
+  }
+
+  function sendSource() {
+    try {
+      var ws = new WebSocket("ws://127.0.0.1:8001/api/v2/channels/samsung.remote.control?name=" + btoa("TVHome"));
+      ws.onmessage = function (m) {
+        var d = JSON.parse(m.data);
+        if (d.event === "ms.channel.connect") {
+          ws.send(JSON.stringify({ method: "ms.remote.control", params: {
+            Cmd: "Click", DataOfCmd: "KEY_SOURCE", Option: "false", TypeOfRemote: "SendRemoteKey" } }));
+          setTimeout(function () { ws.close(); }, 500);
+        }
+      };
+      ws.onerror = function () { say("Impossible d'ouvrir les sources"); };
+    } catch (e) {
+      say("Impossible d'ouvrir les sources");
+    }
+  }
+
+  function launch(t) {
+    if (t.type === "module") launchModule(t);
+    else if (t.type === "source") sendSource();
+    else say(t.name + " : type inconnu");
   }
 
   document.addEventListener("keydown", function (e) {
