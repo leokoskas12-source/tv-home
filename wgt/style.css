@@ -1,9 +1,16 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0b0d12; color: #fff;
   font-family: "SamsungOne", "Segoe UI", sans-serif; }
-#bg { position: fixed; inset: 0; background: radial-gradient(circle at 30% 20%, #243b55, #0b0d12 70%) center/cover;
-  transition: background-image .6s; }
-#bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.65), rgba(0,0,0,.1) 60%); }
+#bg { position: fixed; inset: 0; overflow: hidden;
+  background: linear-gradient(160deg, #070b1f 0%, #0d1b3d 45%, #1a0f3a 100%); }
+#bg::before, #bg::after { content: ""; position: absolute; width: 1400px; height: 1400px; border-radius: 50%;
+  filter: blur(140px); opacity: .55; }
+#bg::before { top: -500px; left: -300px; background: radial-gradient(circle, #19c3b1 0%, transparent 65%);
+  animation: drift1 38s ease-in-out infinite alternate; }
+#bg::after { bottom: -600px; right: -300px; background: radial-gradient(circle, #8a3ffc 0%, transparent 65%);
+  animation: drift2 46s ease-in-out infinite alternate; }
+@keyframes drift1 { to { transform: translate(500px, 260px) scale(1.15); } }
+@keyframes drift2 { to { transform: translate(-460px, -240px) scale(1.2); } }
 header { position: absolute; top: 70px; left: 110px; }
 #time { font-size: 120px; font-weight: 300; letter-spacing: 2px; }
 #date { font-size: 36px; opacity: .8; margin-top: 6px; text-transform: capitalize; }

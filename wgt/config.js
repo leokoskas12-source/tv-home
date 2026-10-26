@@ -7,6 +7,6 @@ window.HOME_CONFIG = {
   tiles: [
     { name: "Nuvio", icon: "▶", type: "app", appId: "NuvioTV001.NuvioTV" },
     { name: "TizenTube", icon: "▷", type: "module", moduleType: "npm", moduleName: "@foxreis/tizentube" },
-    { name: "Sources", icon: "⬚", type: "source" }
+    { name: "Stremio", icon: "S", type: "app", appId: "3202306031311" }
   ]
 };
